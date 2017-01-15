@@ -186,3 +186,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/n,node,webstorm,jetbrains,macos,windows
+/.idea/watcherTasks.xml
