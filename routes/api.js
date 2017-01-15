@@ -6,6 +6,7 @@ var router = express.Router();
 var Task = require('../models/task');
 var moment = require('moment');
 var crypto = require('crypto');
+var fs = require('fs');
 
 router.post('/task/add', function (req, res, next) {
     var content = req.body.content;
@@ -31,7 +32,7 @@ router.post('/task/add', function (req, res, next) {
 
 router.get('/task/get', function (req, res, next) {
 
-    var getAllTask = Task.find({}, null, {sort: {create: -1}}).exec();
+    var getAllTask = Task.find({}, null, {sort: {create: 1}}).exec();
     getAllTask.then(function (tasks) {
         res.json(tasks);
     });
@@ -44,7 +45,7 @@ router.post('/task/remove', function (req, res, next) {
     var id = "";
     var getAllTasks = Task.find({}).exec();
     getAllTasks.then(function (tasks) {
-        if (tasks.length == 0 || number > tasks.length) {
+        if (number == 0 || tasks.length == 0 || number > tasks.length) {
             var status = {status: "error"};
             res.json(status);
         } else {
@@ -55,9 +56,102 @@ router.post('/task/remove', function (req, res, next) {
             });
         }
     });
+});
 
+
+router.get('/light/status', function (req, res, next) {
+    var obj = JSON.parse(fs.readFileSync('ledstatus.json', 'utf8'));
+    res.json(obj);
+});
+
+
+router.post('/light/change', function (req, res, next) {
+    var change = req.body.change;
+    if (change == "on") {
+        var on = {status: "on"};
+        fs.writeFile('ledstatus.json', JSON.stringify(on), 'utf8', function () {
+            res.json({status: "ok"});
+        });
+    } else {
+        var off = {status: "off"};
+        fs.writeFile('ledstatus.json', JSON.stringify(off), 'utf8', function () {
+            res.json({status: "ok"});
+        });
+    }
 
 });
 
+
+router.get('/door/status', function (req, res, next) {
+    var obj = JSON.parse(fs.readFileSync('doorstatus.json', 'utf8'));
+    res.json(obj);
+});
+
+
+router.post('/door/change', function (req, res, next) {
+    var change = req.body.change;
+    if (change == "open") {
+        var on = {door: "open"};
+        fs.writeFile('doorstatus.json', JSON.stringify(on), 'utf8', function () {
+            res.json({status: "ok"});
+        });
+    } else {
+        var off = {door: "close"};
+        fs.writeFile('doorstatus.json', JSON.stringify(off), 'utf8', function () {
+            res.json({status: "ok"});
+        });
+    }
+});
+
+
+router.get('/fan/status', function (req, res, next) {
+    var obj = JSON.parse(fs.readFileSync('fanstatus.json', 'utf8'));
+    res.json(obj);
+});
+
+
+router.post('/fan/change', function (req, res, next) {
+    var change = req.body.change;
+    if (change == "on") {
+        var on = {fan: "on"};
+        fs.writeFile('fanstatus.json', JSON.stringify(on), 'utf8', function () {
+            res.json({status: "ok"});
+        });
+    } else {
+        var off = {fan: "off"};
+        fs.writeFile('fanstatus.json', JSON.stringify(off), 'utf8', function () {
+            res.json({status: "ok"});
+        });
+    }
+});
+
+
+router.post('/all/change', function (req, res, next) {
+    var change = req.body.change;
+    if (change == "on") {
+        var on = {fan: "on"};
+        fs.writeFile('fanstatus.json', JSON.stringify(on), 'utf8', function () {
+            var onOne = {door: "open"};
+            fs.writeFile('doorstatus.json', JSON.stringify(onOne), 'utf8', function () {
+                var onTwo = {status: "on"};
+                fs.writeFile('ledstatus.json', JSON.stringify(onTwo), 'utf8', function () {
+                    res.json({status: "ok"});
+                });
+            });
+        });
+    } else {
+        var off = {fan: "off"};
+        fs.writeFile('fanstatus.json', JSON.stringify(off), 'utf8', function () {
+            var offOne = {door: "close"};
+            fs.writeFile('doorstatus.json', JSON.stringify(offOne), 'utf8', function () {
+                var offTwo = {status: "off"};
+                fs.writeFile('ledstatus.json', JSON.stringify(offTwo), 'utf8', function () {
+                    res.json({status: "ok"});
+                });
+            });
+        });
+    }
+
+});
 
 module.exports = router;
