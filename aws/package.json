@@ -1,0 +1,20 @@
+{
+  "name": "Pandora Box",
+  "version": "1.0.0",
+  "description": "Open Pandora Box and See the future.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "skill"
+  ],
+  "author": "Yoga & Zelin & Lu",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "alexa-sdk": "^1.0.6",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
+  }
+}
