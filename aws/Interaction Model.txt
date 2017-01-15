@@ -1,0 +1,84 @@
+Intent Schema
+
+{
+  "intents": [
+    {
+      "intent": "Light",
+      "slots": [
+        {
+          "name": "LED",
+          "type": "led"
+        }
+      ]
+    },
+    {
+      "intent": "Door",
+      "slots": [
+        {
+          "name": "FRONT",
+          "type": "front"
+        }
+      ]
+    },
+    {
+      "intent": "FFF",
+      "slots": [
+        {
+          "name": "FAN",
+          "type": "fan"
+        }
+      ]
+    },
+    {
+      "intent": "All",
+      "slots": [
+        {
+          "name": "EVE",
+          "type": "eve"
+        }
+      ]
+    },
+    {
+      "intent": "Todo",
+      "slots": [
+        {
+          "name": "ACTION",
+          "type": "action"
+        },
+        {
+          "name": "FOOD",
+          "type": "AMAZON.Food"
+        },
+        {
+          "name": "BOOK",
+          "type": "AMAZON.Book"
+        },
+        {
+          "name": "NUMBER",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    }
+  ]
+}
+
+
+Custom Slot Types
+
+Type	Values
+action	add | tell | remove	Edit
+eve	start | stop	Edit
+fan	run | stop	Edit
+front	open | close	Edit
+led	on | off
+
+Sample Utterances
+
+Light turn {LED} the ligth
+FFF {FAN} my fan
+Door {FRONT} the door
+Todo {ACTION} me the list
+Todo {ACTION} a task that I want to eat {FOOD}
+Todo {ACTION} a task that I want to read {BOOK}
+Todo {ACTION} number {NUMBER} task
+All lets {EVE} everything
