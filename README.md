@@ -5,7 +5,7 @@ An intelligence home assistant base on Amazon Alexa for [HackArizona 2017](https
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ## AWS folder
-You should create your Alexa Skills and Lambda on AWS and using [those files](https://github.com/blueandhack/Pandora-Box/tree/master/AWS).
+You should create your Alexa Skills and Lambda on AWS and using [those files](https://github.com/blueandhack/Pandora-Box/tree/master/AWS-Lambda).
 
 ## Arduino folder
 You should using [those files](https://github.com/blueandhack/Pandora-Box/tree/master/Arduino) for your Arduino.
