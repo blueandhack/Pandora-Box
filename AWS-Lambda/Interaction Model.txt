@@ -1,4 +1,6 @@
+==================
 Intent Schema
+==================
 
 {
   "intents": [
@@ -62,8 +64,9 @@ Intent Schema
   ]
 }
 
-
+==================
 Custom Slot Types
+==================
 
 Type	Values
 action	add | tell | remove	Edit
@@ -72,7 +75,9 @@ fan	run | stop	Edit
 front	open | close	Edit
 led	on | off
 
+==================
 Sample Utterances
+==================
 
 Light turn {LED} the ligth
 FFF {FAN} my fan
