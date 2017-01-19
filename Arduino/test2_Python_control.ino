@@ -6,7 +6,7 @@
 //******************* light *****************//
 int PIN_LIGHT = 2;
 int PIN_LIGHT2 = 3;
-int PIN_WIND1 = 4;
+int PIN_WIND1 = 4; //ping 4, 5, 6, 7 and 12 bundle together for support enough power to motor
 int PIN_WIND2 = 5;
 int PIN_WIND3 = 6;
 int PIN_WIND4 = 7;
