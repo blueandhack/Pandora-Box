@@ -19,3 +19,6 @@ We using NodeJS and ExpressJS for Website, so you should using other files to bu
 - [Zelin Wan](https://github.com/Wan-ZL)
 - Zhiying Li
 
+# Video
+[video instruction](https://youtu.be/1VLvSqc2i9I)
+
